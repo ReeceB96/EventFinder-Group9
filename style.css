@@ -1,0 +1,38 @@
+
+.brand-logo {
+    background-image: url("images/image1.jpg");
+}
+
+.nav-wrapper {
+    text-align: center;
+    color: #A90000;
+    background-color: #F9F9FC;
+    padding: 20px;
+
+}
+    
+#search {
+    width: 20%;
+ display: block;
+ margin: 0 auto;
+ border: 2px solid grey;
+ border-radius: 5px;
+}
+
+#concertInfo {
+background-color: #A90000;
+}
+
+#restaurantInfo {
+    background-color: #4D0103;
+}
+
+
+
+
+
+
+
+
+
+
