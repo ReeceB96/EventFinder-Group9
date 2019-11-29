@@ -1,7 +1,26 @@
-
-.brand-logo {
-    background-image: url("images/image1.jpg");
+body {
+    /* background-image: url(images/event.jpg); */
+   
 }
+.nav-wrapper{
+     background-image: url(images/event.jpg);
+}
+
+
+button{
+    display: block;
+    margin: 0 auto;
+    width: 10%;
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    background: mediumblue;
+
+
+}
+
 
 .nav-wrapper {
     text-align: center;

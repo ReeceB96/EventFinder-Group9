@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <!-- <h2 class="navbar-brand brand-name">
@@ -21,15 +22,28 @@
 
     <div class="nav-wrapper">
 
-        <a href="#" class="brand-logo"><h4>Gigs & Grub</h4><h5>Food and fun near you.</h5></a>
+        <a href="#" class="brand-logo">
+            <h4>Gigs & Grub</h4>
+            <h5>Food and fun near you.</h5>
+        </a>
 
     </div>
 
+    <br><br>
+    <!-- <form name="Contact" action="" method="POST"> -->
+    <div class="row" id="errorMsg">
+        <!-- <div col-sm-6> -->
+            <input id="search" type="text" placeholder=" City, State" value="">
+            <br>
+            <button type="submit">Search </button> 
 
-    <div class="row">
-        <input id="search" type="text" placeholder=" City, State">
+        <!-- </div> -->
+
+        <!-- <div col-sm-6> -->
+            <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+        <!-- </div> -->
     </div>
-
+    <!-- </form> -->
     <div class="row">
 
         <div class="col s6" id="concertInfo">
@@ -43,7 +57,10 @@
 
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="code.js"></script>
 
 </body>
 
