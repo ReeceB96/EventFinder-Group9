@@ -4,35 +4,27 @@ body {
     background-position: center;
 }
 
-.nav-wrapper {
-    text-align: center;
-    color: #A90000;
+.logo {
+    margin: 0 auto;
+
 }
-    
+
 img {
-height: 450px;
-width: 500px;
-margin-top: auto;
-margin-bottom: 10px;
-/* padding-bottom: -160px; */
+    height: auto;
+    width: auto;
+    margin-top: auto;
+
 }
 
 #search {
     width: 20%;
- display: block;
- margin: 0 auto;
- border: 2px solid #A90000;
- border-radius: 5px;
- background-color: #F9F9FC;
- color: #000000;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #A90000;
+    border-radius: 5px;
+    background-color: #F9F9FC;
+    color: #000000;
 }
-
-/* .col-s6 {
-padding: 200px;
-background-color: #F9F9FC;
-opacity: 0.6;
-} */
-
 
 #container1 {
     background-color: #F9F9FC;
@@ -53,7 +45,7 @@ opacity: 0.6;
     max-height: 100%;
     padding: 100px;
     margin-right: 100px;
-    margin-left: 125px;
+    margin-left: 100px;
 }
 
 h4 {
@@ -62,9 +54,65 @@ h4 {
     padding: 0px;
 }
 
+@media only screen 
+and (min-width:320px) 
+and (max-width:740px) {
+
+    #search {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        border: 2px solid #A90000;
+        border-radius: 5px;
+        background-color: #F9F9FC;
+        color: #000000;
+    }
+
+    body {
+        background-image: url("images/background.jpg");
+        height: 100%;
+        width: 100%;
+        background-position: auto;
+    }
+
+    img {
+        width: 100%;
+        align-content: center;
+        position: relative;
+        }
+
+    #container1 {
+        background-color: #F9F9FC;
+        opacity: 0.6;
+        max-width: 100%;
+        border-radius: 8px;
+        max-height: 100%;
+        margin-bottom: 20%;
+        margin: auto;
+        }
+        
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.6;
+        max-width: 100%;
+        border-radius: 8px;
+        max-height: 100%;
+        margin: auto;
+        margin-top: 5%;
+        }
+
+} 
+
+@media only screen 
+and (min-width:320px) 
+and (max-width:740px) {
 
 
 
 
+
+
+
+}
 
 
