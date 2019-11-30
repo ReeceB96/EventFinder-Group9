@@ -1,34 +1,66 @@
-
-.brand-logo {
-    background-image: url("images/image1.jpg");
+body {
+    background-image: url("images/background.jpg");
+    height: 1200px;
+    background-position: center;
 }
 
 .nav-wrapper {
     text-align: center;
     color: #A90000;
-    background-color: #F9F9FC;
-    padding: 20px;
-
 }
     
+img {
+height: 450px;
+width: 500px;
+margin-top: auto;
+margin-bottom: 10px;
+/* padding-bottom: -160px; */
+}
+
 #search {
     width: 20%;
  display: block;
  margin: 0 auto;
- border: 2px solid grey;
+ border: 2px solid #A90000;
  border-radius: 5px;
+ background-color: #F9F9FC;
+ color: #000000;
 }
 
-#concertInfo {
-background-color: #A90000;
+/* .col-s6 {
+padding: 200px;
+background-color: #F9F9FC;
+opacity: 0.6;
+} */
+
+
+#container1 {
+    background-color: #F9F9FC;
+    opacity: 0.6;
+    max-width: 100%;
+    border-radius: 8px;
+    max-height: 100%;
+    padding: 100px;
+    margin-left: 100px;
+    margin-right: 50px;
 }
 
-#restaurantInfo {
-    background-color: #4D0103;
+#container2 {
+    background-color: #F9F9FC;
+    opacity: 0.6;
+    max-width: 100%;
+    border-radius: 8px;
+    max-height: 100%;
+    padding: 100px;
+    margin-right: 100px;
+    margin-left: 125px;
 }
 
-
-
+h4 {
+    text-align: center;
+    margin-top: -100px;
+    padding: 0px;
+}
 
 
 
