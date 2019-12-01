@@ -43,7 +43,7 @@ function retriveEventData() {
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
     city = search_value;
     //console.log("v ", city);
-
+   
 
     // Here I'm building the URL we need to query the database
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&size=40" + "&apikey=" + APIKey;
@@ -59,6 +59,10 @@ function retriveEventData() {
             console.log("Event-- ", response)
 
             var allEvents = response._embedded.events
+            // if (events===undefined) {
+            //    $('#errorMsg').attr("style", "color:red")
+            //    $('#errorMsg').text("Please enter a valid City name");
+            // }
             console.log(allEvents.length)
             for (var i = 0; i < allEvents.length; i++) {
 
@@ -75,17 +79,16 @@ function retriveEventData() {
                 var eventLocation = allEvents[i]._embedded.venues[0].name;
                 var eventCity = allEvents[i]._embedded.venues[0].city.name;
                 var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
+                var eventTicket = allEvents[i].url;
 
 
                 //Set the date 
                 console.log("date ", eventDate)
                 var eventDay = moment(eventDate).format("ddd");
                 var eventDate = moment(eventDate).format("LL")
-                //var eventTime = moment(eventState).format("LT")
-                //console.log(eventDay)
-                //console.log(eventDate)
+                 
                 console.log(" time ", eventTime)
-                //displayEvent(search_value)
+                
 
                 if (search_value === null) {
                     return;
@@ -123,9 +126,10 @@ function retriveEventData() {
                     //add a button to the td 4
                     var mybtn = $("<button>");
                     var atag = $("<a>");
-                    atag.attr("href", "http://www.google.com")
+                    atag.attr("href", eventTicket)
                     mybtn.addClass("ticketButton");
                     atag.text("E-Ticket");
+                    atag.attr('target', '_blank')
                     mybtn.append(atag);
                     tableTd4.append(mybtn);
                     tableRow.append(tableTd4);
