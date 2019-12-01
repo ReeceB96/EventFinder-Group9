@@ -7,8 +7,8 @@ body {
 }
 
 .eventImage{
-    width: 75px;
-    height: 50px;
+    width: 85px;
+    height: 70px;
 
 }  
 
@@ -23,12 +23,18 @@ body {
     border: 2px solid grey;
     border-radius: 5px;
     background: mediumblue;
-    padding-right: 50px;
-    padding-bottom: 30px;
-
+    padding-right: 70px;
+    padding-bottom: 10px;
+    color: cornsilk;
+    text-align: justify; 
 
 }
-
+/* 
+/* a{
+    /* text-align: center; */
+    /* color: cornsilk; */
+    /* text-align: justify;  */
+/* }  */
 
 .nav-wrapper {
     text-align: center;

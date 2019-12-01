@@ -38,23 +38,14 @@ function searchFuntion() {
 searchFuntion()
 
 function retriveEventData() {
-    //searchFuntion(search_value);
-    //console.log("value ", search_value);
-
 
     // This is my API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
     city = search_value;
-    console.log("v ", city);
+    //console.log("v ", city);
 
 
     // Here I'm building the URL we need to query the database
-
-    // queryURL="https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert"&city="+search_value+"&stateCode=NC&radius=50&unit=miles&onsaleOnAfterStartDate=2019-11-21&size=20" + "&appid=" + APIKey;
-
-
-    // var queryURL="https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" +"&city="+ search_value +"&stateCode=NC&radius=50&unit=miles&onsaleOnAfterStartDate=2019-11-21&size=20" + "&apikey=" + APIKey;
-
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&size=40" + "&apikey=" + APIKey;
 
 
@@ -67,101 +58,85 @@ function retriveEventData() {
         .then(function (response) {
             console.log("Event-- ", response)
 
+            var allEvents = response._embedded.events
+            console.log(allEvents.length)
+            for (var i = 0; i < allEvents.length; i++) {
 
 
-            var image = $("<img>");
-            image.addClass("eventImage");
 
-            var mybtn =$("<button>")
-            mybtn.addClass("ticketButton")
+                var image = $("<img>");
+                image.addClass("eventImage");
 
-            //var imageUrl = "http://openweathermap.org/img/wn/13d@2x.png";
-            //image.attr("src", eventImageURL );
-            // //set events information from the response 
-            var eventName = response._embedded.events[0].name;
-            var eventImageURL = response._embedded.events[0].images[0].url;
-            image.attr("src", eventImageURL );
-            //displayEvent(search_value)
-
-            if (search_value === null) {
-                return;
-
-            } else {
-                //search_value.forEach(function (city) {
-                var tableRow = $("<tr>");
-                tableRow.addClass("cityRow");
-                var tableTd1 = $("<td>");
-                var tableTd2 = $("<td>");
-                var tableTd3 = $("<td>");
-                //tableTd.addClass("searchCity")
-                var eventImageURL = response._embedded.events[0].images[0].url;
-                //var tableContent1 = tableTd1.append(image);
-                tableTd1.append(image);
-                tableRow.append(tableTd1);
-
-                var tableContent2 = tableTd2.text(eventName);
-                tableTd2.append(tableContent2);
-                tableRow.append(tableTd2);
-
-                //var tableContent3 = tableTd3.text(eventName);
-                tableTd3.append(mybtn);
-                tableRow.append(tableTd3);
+                // //set events information from the response 
+                var eventName = allEvents[i].name;
+                var eventImageURL = allEvents[i].images[i].url;
+                var eventDate = allEvents[i].dates.start.localDate;
+                var eventTime = allEvents[i].dates.start.localTime;
+                var eventLocation = allEvents[i]._embedded.venues[0].name;
+                var eventCity = allEvents[i]._embedded.venues[0].city.name;
+                var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
 
 
-                $(".table").append(tableRow);
+                //Set the date 
+                console.log("date ", eventDate)
+                var eventDay = moment(eventDate).format("ddd");
+                var eventDate = moment(eventDate).format("LL")
+                //var eventTime = moment(eventState).format("LT")
+                //console.log(eventDay)
+                //console.log(eventDate)
+                console.log(" time ", eventTime)
+                //displayEvent(search_value)
 
-                //})
+                if (search_value === null) {
+                    return;
+
+                } else { 
+                    var tableRow = $("<tr>");
+                    tableRow.addClass("cityRow");
+                    var tableTd1 = $("<td>");
+                    var tableTd2 = $("<td>");
+                    var tableTd3 = $("<td>");
+                    var tableTd4 = $("<td>");
+
+                    var eventImageURL = response._embedded.events[i].images[i].url;
+                    image.attr("src", eventImageURL);
+                    tableTd1.append(image);
+                    tableRow.append(tableTd1);
+
+                    //create a h tag to append  each content
+                    var hTag1 = $("<h6>");
+                    hTag1.text(eventDate)
+                    var hTag2 = $("<h6>");
+                    hTag2.text(eventDay + " : " + eventTime)
+                    tableTd2.append(hTag1, hTag2);
+                    tableRow.append(tableTd2);
+
+
+                    //create a h tag to append  each content
+                    var hTag1 = $("<h6>");
+                    hTag1.text(eventName)
+                    var hTag2 = $("<h6>");
+                    hTag2.text(eventLocation + " - " + eventCity + ", " + eventState)
+                    tableTd3.append(hTag1, hTag2);
+                    tableRow.append(tableTd3);
+
+                    //add a button to the td 4
+                    var mybtn = $("<button>");
+                    var atag = $("<a>");
+                    atag.attr("href", "http://www.google.com")
+                    mybtn.addClass("ticketButton");
+                    atag.text("E-Ticket");
+                    mybtn.append(atag);
+                    tableTd4.append(mybtn);
+                    tableRow.append(tableTd4);
+
+
+                    $(".table").append(tableRow);
+                    
+
+                }
 
             }
-
-
-
-            // //Convert the temparature into F
-            // var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-            // //truncate it to 2 digits
-            // var temparature = tempF.toFixed(2);
-            // //Set humidity variable and content
-            // var humidity = response.main.humidity
-            // //Set wind variable and content
-            // var wind = response.wind.speed
-            // //Create a new Div and set its attribute to append all the weather items   
-            // var weather = $("<div>");
-            // weather.addClass(".displayCity")
-            // weather.css("border", "0.5px solid gray ");
-            // weather.css("margin", "5px");
-            // weather.css("padding", "5px");
-            // weather.css("border-radius", "5px");
-
-            // //display the concert name and  appended to the div container1
-            // var firstContainer = $(".Container1");
-            // cityEl.addClass("city");
-            // cityEl.attr("margin:10px")
-            // cityEl.text(searchVal + "(" + date + ")");
-            // cityEl.append(image)
-            // weather.append(cityEl);
-
-            // //display the Temparature in a li  tag appended to the div container
-            // var name = $("<p>");
-            // name.addClass("eventname");
-            // name.text("Event: " + eventName+);
-            // .append(temp);
-
-            // //display the Humidity in an li tag appended to the div container
-            // var Humidity = $("<p>");
-            // Humidity.addClass("humidity");
-            // Humidity.text("Humidity: " + humidity + " %")
-            // weather.append(Humidity);
-
-            // //display the Wind in an li tag appended to the div container
-            // var Wind = $("<p>");
-            // Wind.addClass("humidity");
-            // Wind.text("Wind-Speed:  " + wind + " mph")
-            // weather.append(Wind);
-
-            // //prepend all the city weather information to the div main container
-            // $(".currentForcast").append(weather);
-
-
         })
 
 
@@ -169,41 +144,13 @@ function retriveEventData() {
 
 
 }
-//retriveEventData()
+ 
 
-function displayEvent(search_value) {
-    if (search_value === null) {
-        return;
-
-    } else {
-        //search_value.forEach(function (city) {
-        var tableRow = $("<tr>");
-        tableRow.addClass("cityRow");
-        var tableTd1 = $("<td>");
-        var tableTd2 = $("<td>");
-        var tableTd3 = $("<td>");
-        //tableTd.addClass("searchCity")
-        var tableContent1 = tableTd1.text(name);
-        tableTd1.append(tableContent1);
-        tableRow.append(tableTd1);
-
-        var tableContent2 = tableTd2.text(eventImage);
-        tableTd2.append(tableContent2);
-        tableRow.append(tableTd2);
-
-        var tableContent3 = tableTd3.text(name);
-        tableTd3.append(tableContent3);
-        tableRow.append(tableTd3);
+ 
+ 
 
 
-        $(".table").append(tableRow);
-
-        //})
-
-    }
-}
-
-//var cityHistory = "";
+ 
 
 
 
