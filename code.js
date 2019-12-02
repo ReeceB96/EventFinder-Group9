@@ -41,11 +41,10 @@ function retriveEventData() {
 
     // This is my API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
-    //var APIKey1 = "01076abed27547fdb6b4bf0fb551be22";
-
+ 
 
     // Here I'm building the URL we need to query the database
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&size=40" + "&apikey=" + APIKey;
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value +"&stateCode=NC&radius=50&unit=miles&size=40" + "&apikey=" + APIKey;
 
     var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=35.2295&lon=-81.7492"
 
@@ -64,27 +63,19 @@ function retriveEventData() {
         // Im store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            // var eventName = allEvents[i].name;
-            // var eventLat = allEvents[i]._embedded.venues[0].location.latitude;
-            // var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
-            
             console.log("Event-- ", response)
-            //console.log("rest-- ", result)
-
+ 
             var allEvents = response._embedded.events
 
             console.log(allEvents.length)
             for (var i = 0; i < allEvents.length; i++) {
-
-                //retriveRestaurantData(eventLat, eventLong)
-                //console.log("rest-- ", result)
 
                 var image = $("<img>");
                 image.addClass("eventImage");
 
                 // //set events information from the response 
                 var eventName = allEvents[i].name;
-                var eventImageURL = allEvents[i].images[i].url;
+                //var eventImageURL = allEvents[i].images[i].url;
                 var eventDate = allEvents[i].dates.start.localDate;
                 var eventTime = allEvents[i].dates.start.localTime;
                 var eventLocation = allEvents[i]._embedded.venues[0].name;
@@ -93,20 +84,15 @@ function retriveEventData() {
                 var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
   
 
-                //console.log("lat ", eventLat)
-                //console.log("long ", eventLong)
+                
 
                 var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
                 var eventTicket = allEvents[i].url;
 
 
                 //Set the date 
-                //console.log("date ", eventDate)
-                var eventDay = moment(eventDate).format("ddd");
+                 var eventDay = moment(eventDate).format("ddd");
                 var eventDate = moment(eventDate).format("LL")
-
-                //console.log(" time ", eventTime)
-
 
                 if (search_value === null) {
                     return;
@@ -119,9 +105,6 @@ function retriveEventData() {
                     var tableTd3 = $("<td>");
                     var tableTd4 = $("<td>");
                     var tableTd5 = $("<td>");
-
-                    //retriveRestaurantData(eventLat, eventLong)
-                    //var eventRestaurant;
 
                     var eventImageURL = response._embedded.events[i].images[i].url;
                     image.attr("src", eventImageURL);
@@ -156,20 +139,6 @@ function retriveEventData() {
                     tableTd4.append(mybtn);
                     tableRow.append(tableTd4);
 
-
-
-                    //add a button to the td 5
-                    // var mybtn = $("<button>");
-                    // var atag = $("<a>");
-                    // atag.attr("href", eventRestaurant)
-                    // mybtn.addClass("ticketButton");
-                    // atag.text("Near By Restaurants");
-                    // atag.attr('target', '_blank')
-                    // mybtn.append(atag);
-                    // tableTd5.append(mybtn);
-                    // tableRow.append(tableTd5);
-
-
                     $(".table").append(tableRow);
 
                 }
@@ -190,8 +159,7 @@ function retriveRestaurantData(eventLat, eventLong) {
 
 
     $.ajax({
-        // url: queryURL,
-        // method: "GET",
+        
         url: queryURL1,
         method: "GET",
         "headers": {
@@ -206,27 +174,36 @@ function retriveRestaurantData(eventLat, eventLong) {
             console.log("Restaurant-- ", result)
             var eventRestaurant = result.link;
             var eventRestName= result.location.title;
+            var eventRestCity= result.location.city_name;
             var eventCuisin = result.popularity.top_cuisines
-            console.log("r ", eventRestaurant);
-            //for (var i = 0; i < 4; i++) {
-
-            //add a button to the td 5
+  
+            //add a new table
             var tableRow = $("<tr>");
             tableRow.addClass("cityRow2");
             var Td = $("<td>");
+            
+
+             //create a h tag to append  each content
+             var hTag1 = $("<h6>");
+             hTag1.text("Title: " + eventRestName)
+             var hTag2 = $("<h6>");
+             hTag2.text(eventRestCity + " - " + eventCuisin)
+             Td.append(hTag1, hTag2);
+             tableRow.append(Td);
+
+
+            //add a button to append to the td 
             var mybtn = $("<button>");
             var atag = $("<a>");
             atag.attr("href", eventRestaurant)
-            mybtn.addClass("ticketButton");
-            atag.text("Top Cuisine: " + eventCuisin ,"<br/>")
+            mybtn.addClass("restaurantButton");
+            atag.text("View Restaraunts: "  )
             atag.attr('target', '_blank')
             mybtn.append(atag);
-            //mybtn.append("Top Cuisine: " , htag )
             Td.append(mybtn);
             tableRow.append(Td);
             $(".table2").append(tableRow)
-
-          //}
+          
         })
 
 }

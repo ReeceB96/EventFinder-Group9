@@ -10,6 +10,7 @@ a{
     text-align: center;
     color: cornsilk;
     font: bolder;
+    font: large;
 }
 
 .logo {
@@ -58,6 +59,7 @@ img {
     margin-right: 5px;
     margin-left: 50px;
     display: inline-block;
+    margin-top: 50px;
 }
 
 h4 {
@@ -79,12 +81,28 @@ h4 {
     margin: 0 auto; 
     border: 2px solid grey;
     border-radius: 5px;
-    background: mediumblue;
+    background: red;
     padding-right: 70px;
     padding-bottom: 10px;
     color: cornsilk;
     text-align: justify; 
 }
+.restaurantButton{
+    /* width: 50%;  */
+    display: block;
+    margin: 0 auto; 
+    border: 2px solid grey;
+    border-radius: 5px;
+    background: red;
+    padding: 10px;
+    /* padding-bottom: 10px; */
+    color: cornsilk;
+    text-align: center; 
+
+}
+
+
+
 
 @media only screen 
 and (min-width:320px) 
