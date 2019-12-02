@@ -31,7 +31,7 @@ function searchFuntion() {
 
         // }
         retriveEventData(search_value)
-
+        //$("#search").empty();
     });
 
 }
@@ -41,32 +41,43 @@ function retriveEventData() {
 
     // This is my API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
-    city = search_value;
-    //console.log("v ", city);
-   
+    //var APIKey1 = "01076abed27547fdb6b4bf0fb551be22";
+
 
     // Here I'm building the URL we need to query the database
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&size=40" + "&apikey=" + APIKey;
+
+    var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=35.2295&lon=-81.7492"
+
 
 
     $.ajax({
         url: queryURL,
         method: "GET",
-
+        // url: queryURL1,
+        // method: "GET",
+        // "headers": {
+        //     "accept": "application/json",
+        //     "user-key": "01076abed27547fdb6b4bf0fb551be22"
+        //   }
     })
         // Im store all of the retrieved data inside of an object called "response"
         .then(function (response) {
+
+            // var eventName = allEvents[i].name;
+            // var eventLat = allEvents[i]._embedded.venues[0].location.latitude;
+            // var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
+            
             console.log("Event-- ", response)
+            //console.log("rest-- ", result)
 
             var allEvents = response._embedded.events
-            // if (events===undefined) {
-            //    $('#errorMsg').attr("style", "color:red")
-            //    $('#errorMsg').text("Please enter a valid City name");
-            // }
+
             console.log(allEvents.length)
             for (var i = 0; i < allEvents.length; i++) {
 
-
+                //retriveRestaurantData(eventLat, eventLong)
+                //console.log("rest-- ", result)
 
                 var image = $("<img>");
                 image.addClass("eventImage");
@@ -78,28 +89,39 @@ function retriveEventData() {
                 var eventTime = allEvents[i].dates.start.localTime;
                 var eventLocation = allEvents[i]._embedded.venues[0].name;
                 var eventCity = allEvents[i]._embedded.venues[0].city.name;
+                var eventLat = allEvents[i]._embedded.venues[0].location.latitude;
+                var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
+  
+
+                //console.log("lat ", eventLat)
+                //console.log("long ", eventLong)
+
                 var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
                 var eventTicket = allEvents[i].url;
 
 
                 //Set the date 
-                console.log("date ", eventDate)
+                //console.log("date ", eventDate)
                 var eventDay = moment(eventDate).format("ddd");
                 var eventDate = moment(eventDate).format("LL")
-                 
-                console.log(" time ", eventTime)
-                
+
+                //console.log(" time ", eventTime)
+
 
                 if (search_value === null) {
                     return;
 
-                } else { 
+                } else {
                     var tableRow = $("<tr>");
                     tableRow.addClass("cityRow");
                     var tableTd1 = $("<td>");
                     var tableTd2 = $("<td>");
                     var tableTd3 = $("<td>");
                     var tableTd4 = $("<td>");
+                    var tableTd5 = $("<td>");
+
+                    //retriveRestaurantData(eventLat, eventLong)
+                    //var eventRestaurant;
 
                     var eventImageURL = response._embedded.events[i].images[i].url;
                     image.attr("src", eventImageURL);
@@ -135,26 +157,87 @@ function retriveEventData() {
                     tableRow.append(tableTd4);
 
 
+
+                    //add a button to the td 5
+                    // var mybtn = $("<button>");
+                    // var atag = $("<a>");
+                    // atag.attr("href", eventRestaurant)
+                    // mybtn.addClass("ticketButton");
+                    // atag.text("Near By Restaurants");
+                    // atag.attr('target', '_blank')
+                    // mybtn.append(atag);
+                    // tableTd5.append(mybtn);
+                    // tableRow.append(tableTd5);
+
+
                     $(".table").append(tableRow);
-                    
 
                 }
+                retriveRestaurantData(eventLat, eventLong)
+
 
             }
+
         })
 
+}
+
+
+function retriveRestaurantData(eventLat, eventLong) {
+
+    var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=" + eventLat + "&lon=" + eventLong;
 
 
 
+    $.ajax({
+        // url: queryURL,
+        // method: "GET",
+        url: queryURL1,
+        method: "GET",
+        "headers": {
+            "accept": "application/json",
+            "user-key": "01076abed27547fdb6b4bf0fb551be22"
+        }
+    })
+        // Im store all of the retrieved data inside of an object called "response"
+        .then(function (response) {
+            var i = 0;
+            var result = response;
+            console.log("Restaurant-- ", result)
+            var eventRestaurant = result.link;
+            var eventRestName= result.location.title;
+            var eventCuisin = result.popularity.top_cuisines
+            console.log("r ", eventRestaurant);
+            //for (var i = 0; i < 4; i++) {
+
+            //add a button to the td 5
+            var tableRow = $("<tr>");
+            tableRow.addClass("cityRow2");
+            var Td = $("<td>");
+            var mybtn = $("<button>");
+            var atag = $("<a>");
+            atag.attr("href", eventRestaurant)
+            mybtn.addClass("ticketButton");
+            atag.text("Top Cuisine: " + eventCuisin ,"<br/>")
+            atag.attr('target', '_blank')
+            mybtn.append(atag);
+            //mybtn.append("Top Cuisine: " , htag )
+            Td.append(mybtn);
+            tableRow.append(Td);
+            $(".table2").append(tableRow)
+
+          //}
+        })
 
 }
- 
-
- 
- 
 
 
- 
+
+
+
+
+
+
 
 
 

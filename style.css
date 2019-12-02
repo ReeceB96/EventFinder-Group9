@@ -1,18 +1,75 @@
 body {
-    /* background-image: url(images/event.jpg); */
-   
+    background-image: url(images/background.jpg);
+    height: 1200px;
+    background-position: center;
 }
-.nav-wrapper{
-     background-image: url(images/event.jpg);
+
+
+a{
+
+    text-align: center;
+    color: cornsilk;
+    font: bolder;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    height: auto;
+    width: auto;
+    padding-top: 50px;
+    align-content: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+
+}
+
+#search {
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #A90000;
+    border-radius: 5px;
+    background-color: #F9F9FC;
+    color: #000000;
+}
+
+#container1 {
+    background-color: #F9F9FC;
+    opacity: 0.6;
+    max-width: 80%;
+    border-radius: 8px;
+    padding: 100px;
+    margin-left: 50px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+#container2 {
+    background-color: #F9F9FC;
+    opacity: 0.6;
+    max-width: 80%;
+    border-radius: 8px;
+    padding: 100px;
+    margin-right: 5px;
+    margin-left: 50px;
+    display: inline-block;
+}
+
+h4 {
+    text-align: center;
+    margin-top: -100px;
+    padding: 0px;
 }
 
 .eventImage{
     width: 85px;
     height: 70px;
-
 }  
-
-
 
 .ticketButton{
     /* display: block; */
@@ -27,45 +84,66 @@ body {
     padding-bottom: 10px;
     color: cornsilk;
     text-align: justify; 
-
-}
-/* 
-/* a{
-    /* text-align: center; */
-    /* color: cornsilk; */
-    /* text-align: justify;  */
-/* }  */
-
-.nav-wrapper {
-    text-align: center;
-    color: #A90000;
-    background-color: #F9F9FC;
-    padding: 20px;
-
-}
-    
-#search {
-    width: 20%;
- display: block;
- margin: 0 auto;
- border: 2px solid grey;
- border-radius: 5px;
 }
 
-#concertInfo {
-background-color: #A90000;
+@media only screen 
+and (min-width:320px) 
+and (max-width:740px) {
+
+    #search {
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+        border: 2px solid #A90000;
+        border-radius: 5px;
+        background-color: #F9F9FC;
+        color: #000000;
+    }
+
+    body {
+        background-image: url("images/background.jpg");
+        height: 100%;
+        width: 100%;
+        background-position: auto;
+    }
+
+    img {
+        width: 100%;
+        align-content: center;
+        position: relative;
+        padding-block: 50px;
+    }
+
+    #container1 {
+        background-color: #F9F9FC;
+        opacity: 0.6;
+        max-width: 100%;
+        border-radius: 8px;
+        max-height: 100%;
+        margin-bottom: 20%;
+        margin: auto;
+        }
+        
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.6;
+        max-width: 100%;
+        border-radius: 8px;
+        max-height: 100%;
+        margin: auto;
+        margin-top: 5%;
+        }
+
+} 
+
+@media only screen 
+and (min-width:320px) 
+and (max-width:740px) {
+
+
+
+
+
+
+
 }
-
-#restaurantInfo {
-    background-color: #4D0103;
-}
-
-
-
-
-
-
-
-
-
-
