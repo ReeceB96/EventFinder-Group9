@@ -10,48 +10,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="logo">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center"><img src="images/smalllogo.png"></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html">Hungry? Click here!</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <div class="logo">
 
         <a href="#" class="brand-logo">
             <img src="images/smalllogo.png">
         </a>
 
-    </div>
+    </div> -->
 
-    <br><br>
+    <br>
 
     <div class="row" id="errorMsg">
-        <input id="search" type="text" placeholder=" Enter Your City" value="">
+        <input id="search" type="text" placeholder=" Enter Your City in NC" value="">
         <br>
     </div>
 
     <div class="row">
 
         <div class="col sm-6" id="concertInfo">
-            <div id="container1">
-                <h4>Concerts in your area:</h4>
-                <br>
-            </div>
-            <!-- Concert Content 1 goes here -->
-            <table class="table table-striped table-dark">
 
-            </table>
+            <div id="container1">
+                <h4>Concerts: </h4>
+                <br>
+                <table class="table table-striped table-dark">
+                </table>
+            </div>
+
         </div>
 
         <div class="col sm-6" id="restaurantInfo">
-            <div id="container2">
-                <h4>Restaurants in your area:</h4>
-                <br>
-            </div>
-            <!-- Restaurant Content 2 goes here -->
-            <table class="table table-striped table-dark">
 
-            </table>
+            <div id="container2">
+                <h4>Restaurants: </h4>
+                <br>
+                <table class="table2 table-striped table-dark">
+                </table>
+            </div>
+
         </div>
 
     </div>
