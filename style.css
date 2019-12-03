@@ -5,10 +5,10 @@ body {
 }
 
 a {
-    text-align: center;
-    color: cornsilk;
-    font: bolder;
+    color: #F9F9FC;
+    font-weight: 900;
     font: large;
+    text-align: center;
 }
 
 .nav-wrapper {
@@ -44,30 +44,29 @@ img {
     color: #000000;
 }
 
+.contentRow {
+    margin: 0 auto;
+    width: 1000px;
+}
+
 #container1 {
     background-color: #F9F9FC;
     opacity: 0.7;
-    max-width: 80%;
     border-radius: 8px;
     padding: 100px;
-    margin-left: 50px;
-    margin-right: 5px;
-    display: inline-block;
-   
-    
+    width: 1000px;
+    display: block;
+    margin: auto;
 }
 
 #container2 {
     background-color: #F9F9FC;
     opacity: 0.7;
-    max-width: 80%;
     border-radius: 8px;
     padding: 100px;
-    margin-right: 5px;
-    margin-left: 50px;
-    display: inline-block;
-   
-    
+    width:1000px;
+    display: block;
+    margin: 30px auto;
 }
 
 h4 {
@@ -89,10 +88,10 @@ h4 {
     border: 2px solid grey;
     border-radius: 5px;
     background: #A90000;
-    padding-right: 70px;
+    padding-right: 30px;
+    padding-left: 30px;
     padding-bottom: 10px;
     color: #F9F9FC;
-    text-align: justify; 
 }
 
 .restaurantButton {
@@ -101,7 +100,7 @@ h4 {
     border: 2px solid grey;
     border-radius: 5px;
     background: #A90000;
-    padding: 10px;
+    padding: 10px 30px 10px 30px;
     color: #F9F9FC;
     text-align: center; 
 }
@@ -129,32 +128,38 @@ and (max-width:740px) {
         background-position: center;
     }
 
+    nav {
+        height: 110px;
+    }
+    
     img {
         display: block;
         margin: 0 auto;
-        height: 200px;
-        width: 200px;
+        height: 100px;
+        width: 150px;
         align-content: center;
     }
 
     #container1 {
         background-color: #F9F9FC;
-        opacity: 0.6;
+        opacity: 0.7;
+        max-width: 100%;
         border-radius: 8px;
         max-height: 100%;
-        margin-bottom: 20%;
+        margin: 0 auto;
+        margin-top: 5%;
         display: block;
-        margin-left: 200px;
         }
         
     #container2 {
         background-color: #F9F9FC;
-        opacity: 0.6;
+        opacity: 0.7;
         max-width: 100%;
         border-radius: 8px;
         max-height: 100%;
-        margin: auto;
+        margin: 0 auto;
         margin-top: 5%;
+        display: block;
         }
 
 } 

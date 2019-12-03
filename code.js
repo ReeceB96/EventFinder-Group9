@@ -116,6 +116,7 @@ function retrieveRestaurantData(eventLat, eventLong) {
             var tableRow = $("<tr>");
             tableRow.addClass("cityRow2");
             var Td = $("<td>");
+            var Td1 = $("<td>");
              //create a h tag to append  each content
              var hTag1 = $("<h6>");
              hTag1.text("Title: " + eventRestName)
@@ -128,11 +129,11 @@ function retrieveRestaurantData(eventLat, eventLong) {
             var atag = $("<a>");
             atag.attr("href", eventRestaurant)
             mybtn.addClass("restaurantButton");
-            atag.text("View Restaurants: "  )
+            atag.text("View "  )
             atag.attr('target', '_blank')
             mybtn.append(atag);
-            Td.append(mybtn);
-            tableRow.append(Td);
+            Td1.append(mybtn);
+            tableRow.append(Td1);
             $(".table2").append(tableRow)
         })
 }
