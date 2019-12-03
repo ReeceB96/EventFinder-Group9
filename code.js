@@ -67,7 +67,7 @@ function retrieveEventData() {
                     var hTag1 = $("<h6>");
                     hTag1.text(eventDate)
                     var hTag2 = $("<h6>");
-                    hTag2.text(eventDay + " : " + eventTime)
+                    hTag2.text(eventDay + ": " + eventTime)
                     tableTd2.append(hTag1, hTag2);
                     tableRow.append(tableTd2);
                     //create a h tag to append  each content

@@ -6,7 +6,7 @@ body {
 
 a {
     color: #F9F9FC;
-    font-weight: 900;
+    font-weight: 800;
     font: large;
     text-align: center;
 }
@@ -19,8 +19,8 @@ nav {
     height: 150px;
 }
 
-nav ul a {
-    color: #A90000;
+h6 {
+font-weight: 700;
 }
 
 img {
@@ -70,8 +70,8 @@ img {
 }
 
 h4 {
-    text-align: left;
-    margin-top: -100px;
+    text-align: center;
+    margin-top: -70px;
     padding: 0px;
     font-family:'Rye', cursive;
 }
@@ -88,9 +88,7 @@ h4 {
     border: 2px solid grey;
     border-radius: 5px;
     background: #A90000;
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-bottom: 10px;
+    padding: 5px 30px 10px 30px;
     color: #F9F9FC;
 }
 
@@ -113,7 +111,7 @@ and (max-width:740px) {
     #search {
         width: 50%;
         display: block;
-        margin: 0 auto;
+        margin-right: 50px;
         border: 2px solid #A90000;
         border-radius: 5px;
         background-color: #F9F9FC;
@@ -164,11 +162,52 @@ and (max-width:740px) {
 
 } 
 
-/* Ipad media querie */
-@media only screen 
+/* Mobile media querie */
+/* @media only screen 
 and (min-width:320px) 
 and (max-width:740px) {
 
+    #search {
+        width: 50%;
+        display: block;
+        margin-right: 50px;
+        border: 2px solid #A90000;
+        border-radius: 5px;
+        background-color: #F9F9FC;
+        color: #000000;
+    }
 
+    h4 {
+        text-align: center;
+        margin-top: -70px;
+        padding: 0px;
+        font-family:'Rye', cursive;
+    }
 
-}
+    body {
+        background-image: url("images/background.jpg");
+        height: 100%;
+        width: 100%;
+        background-attachment: fixed;
+        background-position: center;
+    }
+
+    nav {
+        height: 110px;
+        width: 370px;
+    }
+
+    .nav-wrapper {
+        background-color: #F9F9FC;
+    }
+    
+    img {
+        display: block;
+        margin: 0 auto;
+        height: 100px;
+        width: 150px;
+        align-content: center;
+    }
+
+  
+
