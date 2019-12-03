@@ -21,20 +21,7 @@ function searchFuntion() {
             return;
 
         }
-        //search_value = searchEl.value;
-        //console.log("value ", search_value);
-        //       //This if condition will display an error  message if the search field is empty and save the city to the local storage
-        // if (search_value === "") {
-        //     $('#errorMsg').attr("style", "color:red")
-        //     $('#errorMsg').text("Please enter a valid City name");
-        // } else {
-        //     //search_value.empty();
-        //     //searchHistory.cities.push(searchVal);
 
-        //     localStorage.setItem('searched', search_value );
-        //     console.log("value ", search_value);
-
-        // }
         retriveEventData(search_value)
         //$("#search").empty();
     });
@@ -49,7 +36,7 @@ function retriveEventData() {
  
 
     // Here I'm building the URL we need to query the database
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value +"&stateCode=NC&radius=50&unit=miles&size=40" + "&apikey=" + APIKey;
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster,&keyword=concert" + "&city=" + search_value +"&stateCode=NC&radius=50&unit=miles&size=50&" + "&apikey=" + APIKey;
 
     var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=35.2295&lon=-81.7492"
 
@@ -180,40 +167,32 @@ function retriveRestaurantData(eventLat, eventLong) {
             var eventRestaurant = result.link;
             var eventRestName= result.location.title;
             var eventRestCity= result.location.city_name;
-            var eventCuisin = result.popularity.top_cuisines
-  
+            var eventCuisine = result.popularity.top_cuisines
             //add a new table
             var tableRow = $("<tr>");
             tableRow.addClass("cityRow2");
             var Td = $("<td>");
-            
-
+            var Td1 = $("<td>");
              //create a h tag to append  each content
              var hTag1 = $("<h6>");
              hTag1.text("Title: " + eventRestName)
              var hTag2 = $("<h6>");
-             hTag2.text(eventRestCity + " - " + eventCuisin)
+             hTag2.text(eventRestCity + " - " + eventCuisine)
              Td.append(hTag1, hTag2);
              tableRow.append(Td);
-
-
             //add a button to append to the td 
             var mybtn = $("<button>");
             var atag = $("<a>");
             atag.attr("href", eventRestaurant)
             mybtn.addClass("restaurantButton");
-            atag.text("View Restaraunts: "  )
+            atag.text("View "  )
             atag.attr('target', '_blank')
             mybtn.append(atag);
-            Td.append(mybtn);
-            tableRow.append(Td);
+            Td1.append(mybtn);
+            tableRow.append(Td1);
             $(".table2").append(tableRow)
-          
         })
-
 }
-
-
 
 
 
