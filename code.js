@@ -7,10 +7,15 @@ function searchFuntion() {
 
     var searchbtn = document.querySelector("button")
     var searchEl = document.querySelector("#search");
+    var container1 = document.querySelector("#container1");
+    var container2 = document.querySelector("#container2");
 
     searchEl.addEventListener("change", function (event) {
         event.preventDefault();
+        container1.setAttribute("style", "display:block");
+        container2.setAttribute("style", "display:block");
         var parentEl = this.parentElement;
+
         search_value = parentEl.querySelector("#search").value;
         if (search_value === "") {
             return;
