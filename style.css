@@ -2,8 +2,34 @@ body {
     background-image: url("images/background.jpg");
     height: 1200px;
     background-position: center;
-    position: relative;
-}
+    width: 100%;
+ }
+
+ i{
+    padding: 5px;
+
+ }
+ #icon{
+    display: block;
+    margin-top: -40px;
+    float: right;
+    margin-right: 490px;
+    border: 2px solid #A90000;
+    border-radius: 5px;
+    background-color: #F9F9FC
+     
+    
+ }
+
+ #icon:hover{
+     cursor: pointer;
+ }
+
+ #errorMsg{
+
+    font-weight: 500;
+    text-align: center;
+ }
 
 a {
     color: #F9F9FC;
@@ -114,7 +140,12 @@ and (max-width:740px) {
     
     nav {
         height: 110px;
+        width: 100%;
          
+    }
+
+    table{
+        width: 100%;
     }
 
     .contentRow {
@@ -134,6 +165,7 @@ and (max-width:740px) {
 
     body {
         background-image: url("images/background.jpg");
+        width: 100%;
         
      }
 

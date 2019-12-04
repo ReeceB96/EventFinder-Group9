@@ -1,5 +1,5 @@
 
-//var searchEl = document.querySelector("#search")
+var searchBtn = document.querySelector("#icon")
 
 var search_value = "";
 
@@ -10,20 +10,27 @@ function searchFuntion() {
     var container1 = document.querySelector("#container1");
     var container2 = document.querySelector("#container2");
 
-    searchEl.addEventListener("change", function (event) {
+    searchBtn.addEventListener("click", function (event) {
         event.preventDefault();
-        container1.setAttribute("style", "display:block");
-        container2.setAttribute("style", "display:block");
+        //var parentEl = this.parentElement;
         var parentEl = this.parentElement;
-
+        console.log(this)
         search_value = parentEl.querySelector("#search").value;
+        console.log("search", search_value);
         if (search_value === "") {
+            // console.log("search in if ", search_value)
+            // alert("hello")
+            $('#errorMsg').attr("style", "color:red");
+            $('#errorMsg').text("Please enter a valid City name");
             return;
 
+        } else {
+            container1.setAttribute("style", "display:block");
+            container2.setAttribute("style", "display:block");
+            $('#errorMsg').empty();
+            retriveEventData(search_value);
         }
-
-        retriveEventData(search_value)
-        //$("#search").empty();
+        $("#search").empty();
     });
 
 }
@@ -33,32 +40,33 @@ function retriveEventData() {
 
     // This is my API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
- 
+
 
     // Here I'm building the URL we need to query the database
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster,&keyword=concert" + "&city=" + search_value +"&stateCode=NC&radius=50&unit=miles&size=50&" + "&apikey=" + APIKey;
-
-    var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=35.2295&lon=-81.7492"
-
-
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster,&keyword=concert" + "&city=" + search_value + "&stateCode=NC&radius=50&unit=miles&size=50&" + "&apikey=" + APIKey;
 
     $.ajax({
         url: queryURL,
         method: "GET",
-        // url: queryURL1,
-        // method: "GET",
-        // "headers": {
-        //     "accept": "application/json",
-        //     "user-key": "01076abed27547fdb6b4bf0fb551be22"
-        //   }
+
     })
         // Im store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            console.log("Event-- ", response)
- 
-            var allEvents = response._embedded.events
 
+            //var allEvents = response._embedded.events
+        if (!response || !response._embedded || !response._embedded.events) {
+
+                //alert("hello")
+
+                $('#errorMsg').attr("style", "color:red");
+                $('#errorMsg').text("No result-Please enter a City in North Carolina");
+                return;
+
+
+        } 
+        var allEvents = response._embedded.events
+        //var allEvents = response._embedded.events
             console.log(allEvents.length)
             for (var i = 0; i < allEvents.length; i++) {
 
@@ -74,16 +82,12 @@ function retriveEventData() {
                 var eventCity = allEvents[i]._embedded.venues[0].city.name;
                 var eventLat = allEvents[i]._embedded.venues[0].location.latitude;
                 var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
-  
-
-                
 
                 var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
                 var eventTicket = allEvents[i].url;
 
-
                 //Set the date 
-                 var eventDay = moment(eventDate).format("ddd");
+                var eventDay = moment(eventDate).format("ddd");
                 var eventDate = moment(eventDate).format("LL")
 
                 if (search_value === null) {
@@ -151,7 +155,7 @@ function retriveRestaurantData(eventLat, eventLong) {
 
 
     $.ajax({
-        
+
         url: queryURL1,
         method: "GET",
         "headers": {
@@ -165,27 +169,27 @@ function retriveRestaurantData(eventLat, eventLong) {
             var result = response;
             console.log("Restaurant-- ", result)
             var eventRestaurant = result.link;
-            var eventRestName= result.location.title;
-            var eventRestCity= result.location.city_name;
+            var eventRestName = result.location.title;
+            var eventRestCity = result.location.city_name;
             var eventCuisine = result.popularity.top_cuisines
             //add a new table
             var tableRow = $("<tr>");
             tableRow.addClass("cityRow2");
             var Td = $("<td>");
             var Td1 = $("<td>");
-             //create a h tag to append  each content
-             var hTag1 = $("<h6>");
-             hTag1.text("Title: " + eventRestName)
-             var hTag2 = $("<h6>");
-             hTag2.text(eventRestCity + " - " + eventCuisine)
-             Td.append(hTag1, hTag2);
-             tableRow.append(Td);
+            //create a h tag to append  each content
+            var hTag1 = $("<h6>");
+            hTag1.text("Title: " + eventRestName)
+            var hTag2 = $("<h6>");
+            hTag2.text(eventRestCity + " - " + eventCuisine)
+            Td.append(hTag1, hTag2);
+            tableRow.append(Td);
             //add a button to append to the td 
             var mybtn = $("<button>");
             var atag = $("<a>");
             atag.attr("href", eventRestaurant)
             mybtn.addClass("restaurantButton");
-            atag.text("View "  )
+            atag.text("View ")
             atag.attr('target', '_blank')
             mybtn.append(atag);
             Td1.append(mybtn);
