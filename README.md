@@ -10,25 +10,25 @@ To supply the application with content, API's (Application Programming Interface
 
 Tasks and roles were broken down and assigned to group members based on coding strengths. 
 
+The motivation behind building this application 
+
 There were a few challenges faced while creating the application. Searching for APIs that have proper documentation gave some trouble. For example, navigating the Zomato API was difficult finding what information was needed about restaurants to display on the application. 
 
-Future development of the application would consist of broadening the radius of the APIs used to include concerts across the United States versus the current version that is capable of searching for concerts in North Carolina. Also, optimizing the code to create a more polished application would be ideal. Future versions may include events outside of concerts such as sporting events, comedy shows, family-focused events, and theatre shows. To make the application more user-friendly in the future, an option to buy the tickets in the application would be added.
+Future development of the application would consist of broadening the radius of the APIs used to include concerts across the United States versus the current version that is capable of searching for concerts in North Carolina. Also, optimizing the code to create a more polished application would be ideal. Future versions may include events outside of concerts such as sporting events, comedy shows, family-focused events, and theatre shows. To make the application more user-friendly in the future, an option to buy the tickets in the application would be added. Also, sorting the events in ascending order based on the date of the event to allow the user to see what events are happening soon.
 
 ## User Story
 
-AS A 
+AS A concert goer,
 
-I WANT
+I WANT to search for concerts and restaurants in a city in North Carolina
 
-SO THAT 
+SO THAT I can plan a fun day.
 
-GIVEN
+GIVEN I am a mobile app user
 
-WHEN 
+WHEN I type in a city in North Carolina
 
-THEN
-
-Motivations
+THEN a list of concerts are displayed while showing restaurants nearby.
 
 ## Code Style
 
