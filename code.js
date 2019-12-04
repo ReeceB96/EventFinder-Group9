@@ -6,21 +6,27 @@ function searchFunction() {
     var searchEl = document.querySelector("#search");
     var container1 = document.querySelector("#container1");
     var container2 = document.querySelector("#container2");
-
     searchEl.addEventListener("change", function (event) {
         event.preventDefault();
-        container1.setAttribute("style", "display:block");
-        container2.setAttribute("style", "display:block");
+        //var parentEl = this.parentElement;
         var parentEl = this.parentElement;
-
+        console.log(this)
         search_value = parentEl.querySelector("#search").value;
-        if (search_value === "") {
+        console.log("search", search_value);
+    if (search_value === "") {
+            // console.log("search in if ", search_value)
+            // alert("hello")
+            $('#errorMsg').attr("style", "color:red");
+            $('#errorMsg').text("Please enter a valid City name");
             return;
+    } else {
+            container1.setAttribute("style", "display:block");
+            container2.setAttribute("style", "display:block");
+            $('#errorMsg').empty();
+            retrieveEventData(search_value);
+            $("#search").empty();
         }
-
-        retrieveEventData(search_value)
-
-    });
+ });
 }
 
 searchFunction()
@@ -33,8 +39,6 @@ function retrieveEventData() {
     // Here I'm building the URL we need to query the database
     var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&stateCode=NC&radius=50&unit=miles&size=40" + "&apikey=" + APIKey;
 
-    var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=35.2295&lon=-81.7492"
-
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -44,11 +48,16 @@ function retrieveEventData() {
         //This will store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            console.log("Event-- ", response)
+            //var allEvents = response._embedded.events
+            if (!response || !response._embedded || !response._embedded.events) {
+
+                //alert("hello")
+                $('#errorMsg').attr("style", "color:red");
+                $('#errorMsg').text("No result-Please enter a City in North Carolina");
+                return;
+            }
 
             var allEvents = response._embedded.events
-
-            console.log(allEvents.length)
 
             for (var i = 0; i < allEvents.length; i++) {
 
@@ -142,7 +151,6 @@ function retrieveRestaurantData(eventLat, eventLong) {
 
             var i = 0;
             var result = response;
-            console.log("Restaurant-- ", result)
             var eventRestaurant = result.link;
             var eventRestName = result.location.title;
             var eventRestCity = result.location.city_name;
