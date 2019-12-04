@@ -1,15 +1,11 @@
-
-var searchBtn = document.querySelector("#icon")
-
 var search_value = "";
 
-function searchFuntion() {
+function searchFunction() {
 
     var searchbtn = document.querySelector("button")
     var searchEl = document.querySelector("#search");
     var container1 = document.querySelector("#container1");
     var container2 = document.querySelector("#container2");
-
     searchEl.addEventListener("change", function (event) {
         event.preventDefault();
         //var parentEl = this.parentElement;
@@ -23,53 +19,46 @@ function searchFuntion() {
             $('#errorMsg').attr("style", "color:red");
             $('#errorMsg').text("Please enter a valid City name");
             return;
-
     } else {
             container1.setAttribute("style", "display:block");
             container2.setAttribute("style", "display:block");
             $('#errorMsg').empty();
-            retriveEventData(search_value);
+            retrieveEventData(search_value);
             $("#search").empty();
         }
-        
  });
-
 }
-searchFuntion()
 
-function retriveEventData() {
+searchFunction()
+
+function retrieveEventData() {
 
     // This is my API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
 
-
     // Here I'm building the URL we need to query the database
-    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster,&keyword=concert" + "&city=" + search_value + "&stateCode=NC&radius=50&unit=miles&size=50&" + "&apikey=" + APIKey;
+    var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&source=FrontGate Tickets,Ticketmaster&keyword=concert" + "&city=" + search_value + "&stateCode=NC&radius=50&unit=miles&size=40" + "&apikey=" + APIKey;
 
     $.ajax({
         url: queryURL,
         method: "GET",
 
     })
-        // Im store all of the retrieved data inside of an object called "response"
+
+        //This will store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-
             //var allEvents = response._embedded.events
-        if (!response || !response._embedded || !response._embedded.events) {
- 
+            if (!response || !response._embedded || !response._embedded.events) {
 
+                //alert("hello")
                 $('#errorMsg').attr("style", "color:red");
-                $('#errorMsg').text("No result-Please re-enter a City in North Carolina");
-               
+                $('#errorMsg').text("No result-Please enter a City in North Carolina");
                 return;
-              
+            }
 
-        } 
-        $("#search").empty();
-        var allEvents = response._embedded.events
-        //var allEvents = response._embedded.events
-            console.log(allEvents.length)
+            var allEvents = response._embedded.events
+
             for (var i = 0; i < allEvents.length; i++) {
 
                 var image = $("<img>");
@@ -84,7 +73,6 @@ function retriveEventData() {
                 var eventCity = allEvents[i]._embedded.venues[0].city.name;
                 var eventLat = allEvents[i]._embedded.venues[0].location.latitude;
                 var eventLong = allEvents[i]._embedded.venues[0].location.longitude;
-
                 var eventState = allEvents[i]._embedded.venues[0].state.stateCode;
                 var eventTicket = allEvents[i].url;
 
@@ -113,7 +101,7 @@ function retriveEventData() {
                     var hTag1 = $("<h6>");
                     hTag1.text(eventDate)
                     var hTag2 = $("<h6>");
-                    hTag2.text(eventDay + " : " + eventTime)
+                    hTag2.text(eventDay + ": " + eventTime)
                     tableTd2.append(hTag1, hTag2);
                     tableRow.append(tableTd2);
 
@@ -137,25 +125,18 @@ function retriveEventData() {
                     tableRow.append(tableTd4);
 
                     $(".table").append(tableRow);
-
                 }
-                retriveRestaurantData(eventLat, eventLong)
 
+                retrieveRestaurantData(eventLat, eventLong)
             }
-
         })
-
 }
 
-
-function retriveRestaurantData(eventLat, eventLong) {
+function retrieveRestaurantData(eventLat, eventLong) {
 
     var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=" + eventLat + "&lon=" + eventLong;
 
-
-
     $.ajax({
-
         url: queryURL1,
         method: "GET",
         "headers": {
@@ -163,11 +144,12 @@ function retriveRestaurantData(eventLat, eventLong) {
             "user-key": "01076abed27547fdb6b4bf0fb551be22"
         }
     })
-        // Im store all of the retrieved data inside of an object called "response"
+
+        // This will store all of the retrieved data inside of an object called "response"
         .then(function (response) {
+
             var i = 0;
             var result = response;
-            console.log("Restaurant-- ", result)
             var eventRestaurant = result.link;
             var eventRestName = result.location.title;
             var eventRestCity = result.location.city_name;
@@ -197,17 +179,3 @@ function retriveRestaurantData(eventLat, eventLong) {
             $(".table2").append(tableRow)
         })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
