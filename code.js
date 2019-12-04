@@ -10,28 +10,29 @@ function searchFuntion() {
     var container1 = document.querySelector("#container1");
     var container2 = document.querySelector("#container2");
 
-    searchBtn.addEventListener("click", function (event) {
+    searchEl.addEventListener("change", function (event) {
         event.preventDefault();
         //var parentEl = this.parentElement;
         var parentEl = this.parentElement;
         console.log(this)
         search_value = parentEl.querySelector("#search").value;
         console.log("search", search_value);
-        if (search_value === "") {
+    if (search_value === "") {
             // console.log("search in if ", search_value)
             // alert("hello")
             $('#errorMsg').attr("style", "color:red");
             $('#errorMsg').text("Please enter a valid City name");
             return;
 
-        } else {
+    } else {
             container1.setAttribute("style", "display:block");
             container2.setAttribute("style", "display:block");
             $('#errorMsg').empty();
             retriveEventData(search_value);
+            $("#search").empty();
         }
-        $("#search").empty();
-    });
+        
+ });
 
 }
 searchFuntion()
@@ -56,15 +57,16 @@ function retriveEventData() {
 
             //var allEvents = response._embedded.events
         if (!response || !response._embedded || !response._embedded.events) {
-
-                //alert("hello")
+ 
 
                 $('#errorMsg').attr("style", "color:red");
-                $('#errorMsg').text("No result-Please enter a City in North Carolina");
+                $('#errorMsg').text("No result-Please re-enter a City in North Carolina");
+               
                 return;
-
+              
 
         } 
+        $("#search").empty();
         var allEvents = response._embedded.events
         //var allEvents = response._embedded.events
             console.log(allEvents.length)
@@ -115,7 +117,6 @@ function retriveEventData() {
                     tableTd2.append(hTag1, hTag2);
                     tableRow.append(tableTd2);
 
-
                     //create a h tag to append  each content
                     var hTag1 = $("<h6>");
                     hTag1.text(eventName)
@@ -139,7 +140,6 @@ function retriveEventData() {
 
                 }
                 retriveRestaurantData(eventLat, eventLong)
-
 
             }
 
