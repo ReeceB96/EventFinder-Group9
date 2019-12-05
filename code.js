@@ -66,7 +66,6 @@ function retrieveEventData() {
 
                 // //set events information from the response 
                 var eventName = allEvents[i].name;
-
                 //var eventImageURL = allEvents[i].images[i].url;
                 var eventDate = allEvents[i].dates.start.localDate;
                 var eventTime = allEvents[i].dates.start.localTime;
@@ -155,13 +154,11 @@ function retrieveRestaurantData(eventLat, eventLong) {
             var eventRestName = result.location.title;
             var eventRestCity = result.location.city_name;
             var eventCuisine = result.popularity.top_cuisines
-
             //add a new table
             var tableRow = $("<tr>");
             tableRow.addClass("cityRow2");
             var Td = $("<td>");
             var Td1 = $("<td>");
-
             //create a h tag to append  each content
             var hTag1 = $("<h6>");
             hTag1.text("Title: " + eventRestName)
@@ -169,7 +166,6 @@ function retrieveRestaurantData(eventLat, eventLong) {
             hTag2.text(eventRestCity + " - " + eventCuisine)
             Td.append(hTag1, hTag2);
             tableRow.append(Td);
-
             //add a button to append to the td 
             var mybtn = $("<button>");
             var atag = $("<a>");

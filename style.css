@@ -1,9 +1,9 @@
-/* Default media querie */
+/* Default desktop media querie */
 body {
     background-image: url("images/background.jpg");
     height: 1200px;
     background-position: center;
-    position: relative;
+    position: relative; 
 }
 
 #errorMsg {
@@ -76,6 +76,7 @@ img {
     display: none;
     margin: auto;
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 h4 {
@@ -135,7 +136,7 @@ and (max-width:680px) {
         font: large;
         text-align: center;
     }
-    
+
     .nav-wrapper {
         background-color: #000000;
     }
@@ -197,6 +198,7 @@ and (max-width:680px) {
         display: none;
         margin-left: 25px;
         position: relative;
+        margin-bottom: 30px;
     }
     
     h4 {
@@ -320,6 +322,7 @@ and (max-width:823px) {
         display: none;
         margin-left: 22px;
         position: relative;
+        margin-bottom: 30px;
     }
     
     h4 {
@@ -442,6 +445,7 @@ and (max-width:1050px) {
         display: none;
         margin-left: -12px;
         position: relative;
+        margin-bottom: 30px;
     }
     
     h4 {
@@ -539,6 +543,7 @@ and (max-width:1366px) {
         margin: auto;
         margin-top: 50px;
         margin-left: 40px;
+        margin-bottom: 30px;
     }
 
 } 
