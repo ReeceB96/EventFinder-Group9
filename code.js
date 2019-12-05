@@ -29,6 +29,10 @@ function searchFunction() {
     } else {
         $('#errorMsg').attr("style", "color:red");
         $('#errorMsg').text("Please enter a valid City name");
+
+        container1.setAttribute("style", "display:none");
+        container2.setAttribute("style", "display:none");
+        
         return;
     }     
         
@@ -58,6 +62,13 @@ function retrieveEventData() {
 
             //catching error here
             if (!response || !response._embedded || !response._embedded.events) {
+
+                 
+                $('#errorMsg').attr("style", "color:red");
+                $('#errorMsg').text("No Events-Please enter a City in North Carolina");
+                container1.setAttribute("style", "display:none");
+                container2.setAttribute("style", "display:none");
+
  
                 $('#errorMsg').attr("style", "color:red");
                 $('#errorMsg').text("No Events-Please enter a City in North Carolina");
@@ -66,6 +77,10 @@ function retrieveEventData() {
                 
             }
             $('#errorMsg').empty();
+
+            container1.setAttribute("style", "display:block");
+            container2.setAttribute("style", "display:block"); 
+
             var allEvents = response._embedded.events
             
             for (var i = 0; i < allEvents.length; i++) {
