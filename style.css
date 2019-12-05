@@ -123,6 +123,77 @@ and (max-width:680px) {
         height: 1200px;
         background-position: center;
         position: relative;
+
+    }
+    
+    h5 {
+        width: 200px;
+        height:100px;
+    }
+        
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: 220px;
+        margin-top: 15px;
+    }
+    
+    nav {
+        height: 150px;
+        width: 660px;
+    }
+    
+    img {
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        width: auto;
+        align-content: center;
+        padding-top: 7px;
+    }
+    
+    #search {
+        width: 50%;
+        display: block;
+        border: 2px solid #A90000;
+        border-radius: 5px;
+        background-color: #F9F9FC;
+        color: #000000;
+        margin-top: 75px;
+        margin-bottom: 15px;
+        margin-left: 240px;
+
+    }
+    
+    .contentRow {
+        margin: 0 auto;
+        width: 350px;
+    }
+    
+    #container1 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+        width: 90%;
+        display: none;
+        margin-bottom: 30px;
+        margin-left: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+        padding: 100px;
+        width: 90%;
+        display: none;
+        margin-left: 25px;
+        position: relative;
+        margin-bottom: 30px;
+
     }
     
     #errorMsg {
@@ -135,14 +206,45 @@ and (max-width:680px) {
         font-weight: 800;
         font: large;
         text-align: center;
+
     }
+    
+} 
+
+
+/* Pixel 2, Pixel 2 XL, iPhone 6/7/8 plus media querie */
+@media only screen 
+and (min-width:411px) 
+and (max-width:823px) {
+
+    body {
+        background-image: url("images/background.jpg");
+        height: 1200px;
+        background-position: center;
+        position: relative;
+    }
+
+    h5 {
+        width: 200px;
+        height:100px;
+    }
+        
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: 255px;
+        margin-top: 15px;
 
     .nav-wrapper {
         background-color: #000000;
+
     }
     
     nav {
         height: 150px;
+        width: 700px;
+
         width: 660px;
     }
     
@@ -168,7 +270,10 @@ and (max-width:680px) {
         color: #000000;
         margin-top: 75px;
         margin-bottom: 75px;
+        margin-left: 250px;
+
         margin-left: 230px;
+
 
     }
     
@@ -184,6 +289,11 @@ and (max-width:680px) {
         width: 90%;
         display: none;
         margin-bottom: 30px;
+
+        margin-left: 28px;
+        position: relative;
+        overflow: hidden;
+
         margin-left: 30px;
         position: relative;
         overflow: hidden;
@@ -234,6 +344,25 @@ and (max-width:680px) {
         color: #F9F9FC;
         text-align: center; 
     }
+    
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+        padding: 100px;
+        width: 90%;
+        display: none;
+        margin-left: 13px;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+}
+
+/* Ipad media querie */
+@media only screen 
+and (min-width:740px) 
+and (max-width:1050px) {
 
 } 
 
@@ -247,6 +376,26 @@ and (max-width:823px) {
         height: 1200px;
         background-position: center;
         position: relative;
+
+    }
+    
+    h5 {
+        width: 400px;
+        height:100px;
+    }
+        
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: 255px;
+        margin-top: 15px;
+    }
+
+    nav {
+        height: 150px;
+        width: 900px;
+
     }
     
     #errorMsg {
@@ -292,23 +441,33 @@ and (max-width:823px) {
         color: #000000;
         margin-top: 75px;
         margin-bottom: 75px;
+        margin-left: 260px;
         margin-left: 250px;
 
     }
     
     .contentRow {
         margin: 0 auto;
+        width: 450px;
         width: 350px;
+
     }
     
     #container1 {
         background-color: #F9F9FC;
         opacity: 0.7;
         border-radius: 8px;
+
+        width: 100%;
+        display: none;
+        margin-bottom: 30px;
+        margin-left: -10px;
+
         width: 90%;
         display: none;
         margin-bottom: 30px;
         margin-left: 28px;
+
         position: relative;
         overflow: hidden;
     }
@@ -318,6 +477,12 @@ and (max-width:823px) {
         opacity: 0.7;
         border-radius: 8px;
         padding: 100px;
+
+        width: 100%;
+        display: none;
+        margin-left: -12px;
+        position: relative;
+        margin-bottom: 30px;
         width: 90%;
         display: none;
         margin-left: 22px;
@@ -357,14 +522,19 @@ and (max-width:823px) {
         padding: 10px 30px 10px 30px;
         color: #F9F9FC;
         text-align: center; 
+
     }
 
 }
 
-/* Ipad media querie */
+/* Ipad Pro media querie */
 @media only screen 
+
+and (min-width:1024px) 
+and (max-width:1366px) {
 and (min-width:740px) 
 and (max-width:1050px) {
+
 
     body {
         background-image: url("images/background.jpg");
@@ -391,6 +561,7 @@ and (max-width:1050px) {
     
     nav {
         height: 150px;
+
         width: 900px;
     }
     
@@ -491,11 +662,25 @@ and (max-width:1366px) {
 
     nav {
         height: 150px;
+
         width: 1100px;
     }
 
     .contentRow {
         width: 100%;
+    }
+
+    h5 {
+        width: 600px;
+        height:200px;
+    }
+        
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-left: 245px;
+        margin-top: 15px;
     }
 
     #search {
@@ -508,10 +693,13 @@ and (max-width:1366px) {
         margin-top: 75px;
         margin-bottom: 75px;
         margin-left: 290px;
+
+
     }
 
     body {
         background-image: url("images/background.jpg");
+
     }
 
     img {
