@@ -1,39 +1,51 @@
+//Global Variables 
 var search_value = "";
 
+var TABLE_1 = document.querySelector(".table");
+var TABLE_2 = document.querySelector(".table2");
+
+//Function to add event listner and to call the API function
 function searchFunction() {
 
-    var searchbtn = document.querySelector("button")
     var searchEl = document.querySelector("#search");
     var container1 = document.querySelector("#container1");
     var container2 = document.querySelector("#container2");
+
+    //adding Event listner to the page to grab the value when a city is entered.
     searchEl.addEventListener("change", function (event) {
         event.preventDefault();
-        //var parentEl = this.parentElement;
         var parentEl = this.parentElement;
-        console.log(this)
         search_value = parentEl.querySelector("#search").value;
-        console.log("search", search_value);
-    if (search_value === "") {
-            // console.log("search in if ", search_value)
-            // alert("hello")
-            $('#errorMsg').attr("style", "color:red");
-            $('#errorMsg').text("Please enter a valid City name");
-            return;
+
+    if (search_value !== "") { 
+        container1.setAttribute("style", "display:block");
+        container2.setAttribute("style", "display:block");
+        TABLE_1.innerHTML="";
+        TABLE_2.innerHTML="";
+
+        //Calling API function here
+        retrieveEventData(search_value);
+         
     } else {
-            container1.setAttribute("style", "display:block");
-            container2.setAttribute("style", "display:block");
-            $('#errorMsg').empty();
-            retrieveEventData(search_value);
-            $("#search").empty();
-        }
+        $('#errorMsg').attr("style", "color:red");
+        $('#errorMsg').text("Please enter a valid City name");
+
+        container1.setAttribute("style", "display:none");
+        container2.setAttribute("style", "display:none");
+        
+        return;
+    }     
+        
  });
 }
 
+//Calling main  search Funtion
 searchFunction()
 
+//Defining the TicketMaster API call function here 
 function retrieveEventData() {
 
-    // This is my API key
+    // This is Ticicketmaster API key
     var APIKey = "42auTpFZzVkA9bQdsnU1TKcaCMoXIyTu";
 
     // Here I'm building the URL we need to query the database
@@ -48,17 +60,29 @@ function retrieveEventData() {
         //This will store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            //var allEvents = response._embedded.events
+            //catching error here
             if (!response || !response._embedded || !response._embedded.events) {
 
-                //alert("hello")
+                 
                 $('#errorMsg').attr("style", "color:red");
-                $('#errorMsg').text("No result-Please enter a City in North Carolina");
+                $('#errorMsg').text("No Events-Please enter a City in North Carolina");
+                container1.setAttribute("style", "display:none");
+                container2.setAttribute("style", "display:none");
+
+ 
+                $('#errorMsg').attr("style", "color:red");
+                $('#errorMsg').text("No Events-Please enter a City in North Carolina");
+                
                 return;
+                
             }
+            $('#errorMsg').empty();
+
+            container1.setAttribute("style", "display:block");
+            container2.setAttribute("style", "display:block"); 
 
             var allEvents = response._embedded.events
-
+            
             for (var i = 0; i < allEvents.length; i++) {
 
                 var image = $("<img>");
@@ -66,8 +90,6 @@ function retrieveEventData() {
 
                 // //set events information from the response 
                 var eventName = allEvents[i].name;
-
-                //var eventImageURL = allEvents[i].images[i].url;
                 var eventDate = allEvents[i].dates.start.localDate;
                 var eventTime = allEvents[i].dates.start.localTime;
                 var eventLocation = allEvents[i]._embedded.venues[0].name;
@@ -124,15 +146,16 @@ function retrieveEventData() {
                     mybtn.append(atag);
                     tableTd4.append(mybtn);
                     tableRow.append(tableTd4);
-
+               
                     $(".table").append(tableRow);
                 }
-
+                //Calling Zomato API function here using the Geolocation of Ticketmaster API
                 retrieveRestaurantData(eventLat, eventLong)
             }
         })
 }
 
+//Defining Zomato API function. I'm passing Latitude and Longitude from Ticketmaster API as parameter to it
 function retrieveRestaurantData(eventLat, eventLong) {
 
     var queryURL1 = "https://developers.zomato.com/api/v2.1/geocode?lat=" + eventLat + "&lon=" + eventLong;
@@ -149,12 +172,11 @@ function retrieveRestaurantData(eventLat, eventLong) {
         // This will store all of the retrieved data inside of an object called "response"
         .then(function (response) {
 
-            var i = 0;
             var result = response;
             var eventRestaurant = result.link;
             var eventRestName = result.location.title;
             var eventRestCity = result.location.city_name;
-            var eventCuisine = result.popularity.top_cuisines
+            var eventCuisine = result.popularity.top_cuisines;
 
             //add a new table
             var tableRow = $("<tr>");

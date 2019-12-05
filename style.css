@@ -123,6 +123,7 @@ and (max-width:680px) {
         height: 1200px;
         background-position: center;
         position: relative;
+
     }
     
     h5 {
@@ -192,9 +193,24 @@ and (max-width:680px) {
         margin-left: 25px;
         position: relative;
         margin-bottom: 30px;
+
+    }
+    
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    a {
+        color: #F9F9FC;
+        font-weight: 800;
+        font: large;
+        text-align: center;
+
     }
     
 } 
+
 
 /* Pixel 2, Pixel 2 XL, iPhone 6/7/8 plus media querie */
 @media only screen 
@@ -219,11 +235,21 @@ and (max-width:823px) {
         margin-bottom: 15px;
         margin-left: 255px;
         margin-top: 15px;
+
+    .nav-wrapper {
+        background-color: #000000;
+
     }
     
     nav {
         height: 150px;
         width: 700px;
+
+        width: 660px;
+    }
+    
+    h6 {
+        font-weight: 700;
     }
     
     img {
@@ -246,6 +272,9 @@ and (max-width:823px) {
         margin-bottom: 75px;
         margin-left: 250px;
 
+        margin-left: 230px;
+
+
     }
     
     .contentRow {
@@ -260,9 +289,60 @@ and (max-width:823px) {
         width: 90%;
         display: none;
         margin-bottom: 30px;
+
         margin-left: 28px;
         position: relative;
         overflow: hidden;
+
+        margin-left: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+        padding: 100px;
+        width: 90%;
+        display: none;
+        margin-left: 25px;
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    h4 {
+        text-align: center;
+        margin-top: -70px;
+        padding: 0px;
+        font-family:'Rye', cursive;
+    }
+    
+    .eventImage {
+        width: 85px;
+        height: 70px;
+    }  
+    
+    .ticketButton {
+        width: 100%; 
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 5px 30px 10px 30px;
+        color: #F9F9FC;
+    }
+    
+    .restaurantButton {
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 10px 30px 10px 30px;
+        color: #F9F9FC;
+        text-align: center; 
     }
     
     #container2 {
@@ -284,11 +364,19 @@ and (max-width:823px) {
 and (min-width:740px) 
 and (max-width:1050px) {
 
+} 
+
+/* Pixel 2, Pixel 2 XL, iPhone 6/7/8 plus media querie */
+@media only screen 
+and (min-width:411px) 
+and (max-width:823px) {
+
     body {
         background-image: url("images/background.jpg");
         height: 1200px;
         background-position: center;
         position: relative;
+
     }
     
     h5 {
@@ -307,6 +395,178 @@ and (max-width:1050px) {
     nav {
         height: 150px;
         width: 900px;
+
+    }
+    
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    a {
+        color: #F9F9FC;
+        font-weight: 800;
+        font: large;
+        text-align: center;
+    }
+    
+    .nav-wrapper {
+        background-color: #000000;
+    }
+    
+    nav {
+        height: 150px;
+        width: 700px;
+    }
+    
+    h6 {
+        font-weight: 700;
+    }
+    
+    img {
+        display: block;
+        margin: 0 auto;
+        height: auto;
+        width: auto;
+        align-content: center;
+        padding-top: 7px;
+    }
+    
+    #search {
+        width: 50%;
+        display: block;
+        border: 2px solid #A90000;
+        border-radius: 5px;
+        background-color: #F9F9FC;
+        color: #000000;
+        margin-top: 75px;
+        margin-bottom: 75px;
+        margin-left: 260px;
+        margin-left: 250px;
+
+    }
+    
+    .contentRow {
+        margin: 0 auto;
+        width: 450px;
+        width: 350px;
+
+    }
+    
+    #container1 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+
+        width: 100%;
+        display: none;
+        margin-bottom: 30px;
+        margin-left: -10px;
+
+        width: 90%;
+        display: none;
+        margin-bottom: 30px;
+        margin-left: 28px;
+
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #container2 {
+        background-color: #F9F9FC;
+        opacity: 0.7;
+        border-radius: 8px;
+        padding: 100px;
+
+        width: 100%;
+        display: none;
+        margin-left: -12px;
+        position: relative;
+        margin-bottom: 30px;
+        width: 90%;
+        display: none;
+        margin-left: 22px;
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    h4 {
+        text-align: center;
+        margin-top: -70px;
+        padding: 0px;
+        font-family:'Rye', cursive;
+    }
+    
+    .eventImage {
+        width: 85px;
+        height: 70px;
+    }  
+    
+    .ticketButton {
+        width: 100%; 
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 5px 30px 10px 30px;
+        color: #F9F9FC;
+    }
+    
+    .restaurantButton {
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 10px 30px 10px 30px;
+        color: #F9F9FC;
+        text-align: center; 
+
+    }
+
+}
+
+/* Ipad Pro media querie */
+@media only screen 
+
+and (min-width:1024px) 
+and (max-width:1366px) {
+and (min-width:740px) 
+and (max-width:1050px) {
+
+
+    body {
+        background-image: url("images/background.jpg");
+        height: 1200px;
+        background-position: center;
+        position: relative;
+    }
+    
+    #errorMsg {
+        font-weight: 500;
+        text-align: center;
+    }
+    
+    a {
+        color: #F9F9FC;
+        font-weight: 800;
+        font: large;
+        text-align: center;
+    }
+    
+    .nav-wrapper {
+        background-color: #000000;
+    }
+    
+    nav {
+        height: 150px;
+
+        width: 900px;
+    }
+    
+    h6 {
+        font-weight: 700;
     }
     
     img {
@@ -342,7 +602,7 @@ and (max-width:1050px) {
         width: 100%;
         display: none;
         margin-bottom: 30px;
-        margin-left: -10px;
+        margin-left: -8px;
         position: relative;
         overflow: hidden;
     }
@@ -358,6 +618,40 @@ and (max-width:1050px) {
         position: relative;
         margin-bottom: 30px;
     }
+    
+    h4 {
+        text-align: center;
+        margin-top: -70px;
+        padding: 0px;
+        font-family:'Rye', cursive;
+    }
+    
+    .eventImage {
+        width: 85px;
+        height: 70px;
+    }  
+    
+    .ticketButton {
+        width: 100%; 
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 5px 30px 10px 30px;
+        color: #F9F9FC;
+    }
+    
+    .restaurantButton {
+        display: block;
+        margin: 0 auto; 
+        border: 2px solid grey;
+        border-radius: 5px;
+        background: #A90000;
+        padding: 10px 30px 10px 30px;
+        color: #F9F9FC;
+        text-align: center; 
+    }
 
 } 
 
@@ -368,6 +662,7 @@ and (max-width:1366px) {
 
     nav {
         height: 150px;
+
         width: 1100px;
     }
 
@@ -398,6 +693,13 @@ and (max-width:1366px) {
         margin-top: 75px;
         margin-bottom: 75px;
         margin-left: 290px;
+
+
+    }
+
+    body {
+        background-image: url("images/background.jpg");
+
     }
 
     img {

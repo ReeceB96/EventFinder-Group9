@@ -6,9 +6,14 @@
 
 While planning to go to a concert, figuring out where you are going to eat can create a hassle. The purpose of this mobile-friendly application solves that problem. It allows the user to conveniently search a city in NC and display local concerts and restaurants in return to plan the day accordingly.
 
+
 To supply the application with content, API's (Application Programming Interface) are used to contact a server and retrieve selective information to display. Ticketmaster is used to pull data regarding concerts. More specifically, an image of the event, the day, date and time, the name of the event, the venue, and the city where the event is taking place are pulled from the API. A button is located on the page to direct the user to Ticketmaster's website where they can purchase tickets if desired. Ticketmaster's geolocation API was used to power Zomato to locate restaurants near the city searched. Zomato's API is used to retrieve data regarding restaurants located near the event. A button labeled 'View' is located where the Restaurants are displayed to direct the user to view restaurants in the area of the event.
 
 Every success was celebrated in the development of the application. The milestones felt great to accomplish as the group grew in their coding capabilities. The moment when the API was returning the desired information and we had everything lined up correctly in the table was a great feeling. Another positive moment was when we discovered why our containers were not responsive on the page: it was the navigation bar that had to be extended within the body the entire time! Those breakthrough moments supply us with motivation and keep driving us forward to always improve.
+
+
+To supply the application with content, API's (Application Programming Interface) are used to contact a server and retrieve selective information to display. Ticketmaster is used to pull data regarding concerts. More specifically, an image of the event, the day, date and time, the name of the event, the venue, and the city where the event is taking place are pulled from the API. A button is located on the page to direct the user to Ticketmaster's website where they can purchase tickets if desired. Ticketmaster's geolocation API was used to power Zomato to locate restaurants near the city searched. Zomato's API is used to retrieve data regarding restaurants located near the event. A button labeled 'View' is located where the Restaurants are displayed to direct the user to view restaurants in the area of the event.
+
 
 There were a few challenges faced while creating the application. Searching for APIs that have proper documentation gave some trouble. For example, navigating the Zomato API was difficult finding what information was needed about restaurants to display on the application. 
 
